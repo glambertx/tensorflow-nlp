@@ -91,22 +91,6 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
 def negSamplingCostAndGradient(predicted, target, outputVectors, dataset, K=10):
     """ Negative sampling cost function for word2vec models """
 
-    # Implement the cost and gradients for one predicted word vector
-    # and one target word vector as a building block for word2vec
-    # models, using the negative sampling technique. K is the sample
-    # size. You might want to use dataset.sampleTokenIdx() to sample
-    # a random word index.
-    #
-    # Note: See test_word2vec below for dataset's initialization.
-    #
-    # Input/Output Specifications: same as softmaxCostAndGradient
-    # We will not provide starter code for this function, but feel
-    # free to reference the code you previously wrote for this
-    # assignment!
-
-
-    ### YOUR CODE HERE
-
     ## set-up some variables
     sample=[dataset.sampleTokenIdx() for i in range(K)]
     vc = predicted
@@ -142,29 +126,6 @@ def skipgram(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     dataset, word2vecCostAndGradient = softmaxCostAndGradient):
     """ Skip-gram model in word2vec """
 
-    # Implement the skip-gram model in this function.
-
-    # Inputs:
-    # - currrentWord: a string of the current center word
-    # - C: integer, context size
-    # - contextWords: list of no more than 2*C strings, the context words
-    # - tokens: a dictionary that maps words to their indices in
-    #      the word vector list
-    # - inputVectors: "input" word vectors (as rows) for all tokens
-    # - outputVectors: "output" word vectors (as rows) for all tokens
-    # - word2vecCostAndGradient: the cost and gradient function for
-    #      a prediction vector given the target word vectors,
-    #      could be one of the two cost functions you
-    #      implemented above
-
-    # Outputs:
-    # - cost: the cost function value for the skip-gram model
-    # - grad: the gradient with respect to the word vectors
-    # We will not provide starter code for this function, but feel
-    # free to reference the code you previously wrote for this
-    # assignment!
-
-
     cost=0.0
     gradIn=np.zeros_like(inputVectors)
     gradOut=np.zeros(outputVectors.shape)
@@ -185,13 +146,6 @@ def skipgram(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
 def cbow(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     dataset, word2vecCostAndGradient = softmaxCostAndGradient):
     """ CBOW model in word2vec """
-
-    # Implement the continuous bag-of-words model in this function.
-    # Input/Output specifications: same as the skip-gram model
-    # We will not provide starter code for this function, but feel
-    # free to reference the code you previously wrote for this
-    # assignment!
-
 
     N=len(contextWords)
     return cost/N, gradIn/N, gradOut/N #here divide by N
