@@ -1,5 +1,5 @@
 # Stanford-CS-224D
 
-Selected code examples for deep learning natural language processing class
+Code examples and final project
 
 http://cs224d.stanford.edu/
